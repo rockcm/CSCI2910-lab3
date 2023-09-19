@@ -217,14 +217,14 @@ namespace QueryBuilderStarter
                 // Quotation marks are necessary for the text format
                 else if (property.PropertyType == typeof(string))
                 {
-                    string stringValue = property.GetValue(obj)?.ToString() ?? string.Empty;
+                    string stringValue = property.GetValue(obj)?.ToString();
                     values.Add($"'{stringValue}'");
                 }
                 // Format other data types for the database
                 else
                 {
                     object propertyValue = property.GetValue(obj);
-                    string formattedValue = propertyValue?.ToString() ?? "NULL";
+                    string formattedValue = propertyValue.ToString();
                     values.Add(formattedValue);
                 }
 
