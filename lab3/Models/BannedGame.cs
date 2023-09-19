@@ -9,37 +9,39 @@ using QueryBuilderStarter;
 
 public class BannedGame : IClassModel
 {
-
-    public string Series { get; set; }
-    public string Game { get; set; }
-    public string Description { get; set; }
-    public string country { get; set; }
     public int Id { get; set; }
+    public string Title { get; set; }
+    public string Series { get; set; }
+    public string Country { get; set; }
+    public string Details { get; set; }
+   
+   
 
     public BannedGame()
     {
         this.Id = 0;
-        this.country = string.Empty;
+        this.Country = string.Empty;
         this.Series = string.Empty;
-        this.Game = string.Empty;
-        this.Description = string.Empty;
+        this.Title = string.Empty;
+        this.Details = string.Empty;
 
     }
 
-    public BannedGame(int Id, string series, string game, string country, string description)
+    public BannedGame(int Id, string Series, string Title, string Country, string Details)
     {
         this.Id = Id;
-        this.Series = series;
-        this.Game = game;
-        this.Description = description;
+        this.Series = Series;
+        this.Title = Title;
+        this.Country = Country;
+        this.Details = Details;
 
     }
 
     public override string ToString()
     {
         string str = $"Series {Series}\n";
-        str += $"Series {Game}\n";
-        str += $"Series {Description}\n";
+        str += $"Series {Title}\n";
+        str += $"Series {Details}\n";
         return str;
 
     }
