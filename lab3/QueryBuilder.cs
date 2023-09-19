@@ -192,17 +192,18 @@ namespace QueryBuilderStarter
         }
 
         /// <summary>
-        /// Create operation to insert a new record into the SQLite database
+        /// Creates an operation to insert a new record into the SQLite database
         /// </summary>
         /// <typeparam name="T">Type of object to insert</typeparam>
         /// <param name="obj">Object of type T to be inserted</param>
         public void Create<T>(T obj) where T : IClassModel
         {
-            // Get the property names and values of the object
+            // Get property names and values of object
             PropertyInfo[] properties = typeof(T).GetProperties();
             var values = new List<string>();
             var names = new List<string>();
 
+            // Each property of the obj
             foreach (PropertyInfo property in properties)
             {
                 // Format DateTime for the database (reverse the process in Read)
@@ -217,13 +218,13 @@ namespace QueryBuilderStarter
                 // Quotation marks are necessary for the text format
                 else if (property.PropertyType == typeof(string))
                 {
-                    string stringValue = property.GetValue(obj)?.ToString();
+                    string stringValue = property.GetValue(obj).ToString();
                     values.Add($"'{stringValue}'");
                 }
                 // Format other data types for the database
                 else
                 {
-                    object propertyValue = property.GetValue(obj);
+                    var propertyValue = property.GetValue(obj);
                     string formattedValue = propertyValue.ToString();
                     values.Add(formattedValue);
                 }
@@ -231,12 +232,12 @@ namespace QueryBuilderStarter
                 names.Add(property.Name);
             }
 
-            // Build the insert statement
+            // Build up the insert statement, pass string array of the obj for values and the str. 
             string columns = string.Join(", ", names);
-            string valuePlaceholders = string.Join(", ", values);
+            string ColumnValues = string.Join(", ", values);
 
             var command = connection.CreateCommand();
-            command.CommandText = $"INSERT INTO {typeof(T).Name} ({columns}) VALUES ({valuePlaceholders})";
+            command.CommandText = $"INSERT INTO {typeof(T).Name} ({columns}) VALUES ({ColumnValues})";
             command.ExecuteNonQuery();
         }
 
