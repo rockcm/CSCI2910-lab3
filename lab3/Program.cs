@@ -8,6 +8,23 @@ using System.Threading.Tasks;
 
 
 string path;
-Console.WriteLine("enter path name ");
-path = Console.ReadLine();
+path = "../../../Data/data.db";
 QueryBuilder QB = new QueryBuilder(path);
+
+var results = QB.ReadAll<Pokemon>();
+
+Pokemon Zelda = new Pokemon(1046, 999, " ", "Zelda", "poison", "flying", 0, 0, 0, 0, 0, 0, 0, 0);
+
+
+foreach (var pokemon in results)
+{
+    Console.WriteLine(pokemon);
+}
+
+
+//QB.Delete(Zelda);
+
+
+//QB.Create(Zelda);
+
+QB.Dispose();
