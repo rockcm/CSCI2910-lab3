@@ -198,7 +198,7 @@ namespace QueryBuilderStarter
         /// <param name="obj">Object of type T to be inserted</param>
         public void Create<T>(T obj) where T : IClassModel
         {
-            // Get property names and values of object
+            // Gets the property names and values of object
             PropertyInfo[] properties = typeof(T).GetProperties();
             var values = new List<string>();
             var names = new List<string>();
@@ -206,8 +206,7 @@ namespace QueryBuilderStarter
             // Each property of the obj
             foreach (PropertyInfo property in properties)
             {
-                // Format DateTime for the database (reverse the process in Read)
-                // Quotation marks are necessary for the date format
+                // Format DateTime for the database..  (reverses what happens in Read)
                 if (property.PropertyType == typeof(DateTime))
                 {
                     DateTime dateTimeValue = (DateTime)property.GetValue(obj);
@@ -215,7 +214,6 @@ namespace QueryBuilderStarter
                     values.Add($"'{formattedDate}'");
                 }
                 // Format string for the database
-                // Quotation marks are necessary for the text format
                 else if (property.PropertyType == typeof(string))
                 {
                     string stringValue = property.GetValue(obj).ToString();
