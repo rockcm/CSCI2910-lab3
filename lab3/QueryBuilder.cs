@@ -234,13 +234,23 @@ namespace QueryBuilderStarter
 
             // Build up the insert statement, pass string array of the obj for values and the str. 
             string columns = string.Join(", ", names);
-            string ColumnValues = string.Join(", ", values);
+            string RowValues = string.Join(", ", values);
 
             var command = connection.CreateCommand();
-            command.CommandText = $"INSERT INTO {typeof(T).Name} ({columns}) VALUES ({ColumnValues})";
+            command.CommandText = $"INSERT INTO {typeof(T).Name} ({columns}) VALUES ({RowValues})";
             command.ExecuteNonQuery();
         }
 
+        /// <summary>
+        /// Delete all records from a table in the SQLite database
+        /// </summary>
+        /// <typeparam name="T">Type of objects to delete</typeparam>
+        public void DeleteAll<T>() where T : IClassModel
+        {
+            var command = connection.CreateCommand();
+            command.CommandText = $"DELETE FROM {typeof(T).Name}";
+            command.ExecuteNonQuery();
+        }
 
     }
 }

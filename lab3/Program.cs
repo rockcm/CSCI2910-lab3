@@ -24,8 +24,13 @@ Pokemon[] pokearr = { Zelda, Mario };
 
 BannedGame BadGame = new BannedGame(1000, "Kingdom Hearts", "KH3", "USA", "Test Ban" );
 
+//QB.Create(BadGame);
+
+QB.DeleteAll<BannedGame>();
 
 
+
+/*
 
 QB.Create(BadGame);
 
@@ -51,3 +56,4 @@ QB.Delete(Zelda);
 QB.Create(Zelda);
 
 QB.Dispose();
+*/
