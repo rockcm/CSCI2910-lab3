@@ -27,43 +27,46 @@ BannedGame KH = new BannedGame(1000, "Kingdom Hearts", "KH3", "USA", "Test Ban" 
 
 
 
-
-//add readkeys 
-
-
-
-
-
-
 QB.Create(KH);
-Console.WriteLine($"Added {KH} to sql database banned games");
+Console.WriteLine($" {KH} Added to sql database banned games");
 Console.ReadKey();
 
 QB.Create(Sora);
-Console.WriteLine($"Added {Sora} to sql database pokemon");
+Console.WriteLine($" {Sora} Added to sql database pokemon, press any key to continue. ");
 Console.ReadKey();
-
-Console.WriteLine("Next action will delete all rows from banned games");
-
-
-QB.DeleteAll<BannedGame>();
-
 
 
 for (int i = 0; i < pokearr.Length; i++)
 {
     QB.Create(pokearr[i]);
+    Console.WriteLine($" {i} added to the sql library.");
 }
 
 
+
+
+Console.WriteLine("Next press will delete all rows from banned games, press any key to continue. ");
+Console.ReadKey();
+
+QB.DeleteAll<BannedGame>();
+
+Console.WriteLine("All games deleted from banned games, press any key to continue. ");
+Console.ReadKey();
+
+
+
+
+/*
 foreach (var pokemon in results)
 {
     Console.WriteLine(pokemon);
 }
 
-
-
-
+foreach (var game in GameResults)
+{
+    Console.WriteLine(game);
+}
+*/ 
 
 
 

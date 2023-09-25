@@ -73,7 +73,7 @@ public class Pokemon : IClassModel
         str += $"SpecialAttack: {SpecialAttack}\n";
         str += $"SpecialDefense: {SpecialDefense}\n";
         str += $"Speed: {Speed}\n";
-        str += $"Generation: {Generation}\n";
+        str += $"Generation: {Generation}.";
 
         return str;
     }

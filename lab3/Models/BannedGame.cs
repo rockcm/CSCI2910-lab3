@@ -39,9 +39,9 @@ public class BannedGame : IClassModel
 
     public override string ToString()
     {
-        string str = $"Series {Series}\n";
-        str += $"Series {Title}\n";
-        str += $"Series {Details}\n";
+        string str = $"Series {Series},";
+        str += $"Series {Title},";
+        str += $"Series {Details}.";
         return str;
 
     }
