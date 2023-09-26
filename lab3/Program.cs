@@ -65,21 +65,39 @@ for (int i = 0; i < GameArr.Length; i++)
 }
 
 
-/*
-foreach (var pokemon in results)
-{
-    Console.WriteLine(pokemon);
-}
+// not used, excell sheet only for if you mess up DB. 
 
-foreach (var game in GameResults)
+/*
+List<Pokemon> pokemonList = new List<Pokemon>();
+
+string filePath = ""; 
+string[] lines = File.ReadAllLines(filePath);
+
+foreach (string line in lines.Skip(1)) 
 {
-    Console.WriteLine(game);
+    string[] data = line.Split(',');
+
+    Pokemon pokemon = new Pokemon
+    {
+        Id = int.Parse(data[0]),
+        DexNumber = int.Parse(data[1]),
+        Name = data[2],
+        Form = data[3],
+        Type1 = data[4],
+        Type2 = data[5],
+        Total = int.Parse(data[6]),
+        HP = int.Parse(data[7]),
+        Attack = int.Parse(data[8]),
+        Defense = int.Parse(data[9]),
+        SpecialAttack = int.Parse(data[10]),
+        SpecialDefense = int.Parse(data[11]),
+        Speed = int.Parse(data[12]),
+        Generation = int.Parse(data[13])
+    };
+
+    pokemonList.Add(pokemon);
 }
 */
-
-
-
-
 
 
 
